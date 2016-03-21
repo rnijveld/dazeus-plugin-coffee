@@ -8,6 +8,8 @@ If you really need any of the advanced features you can always take a look at
 
   }coffee help
 
+(Note: the command changes depending on the beverage selected in the config)
+
 ## Running
 After having installed a somewhat recent version of nodejs and npm, simply
 install dependencies using:

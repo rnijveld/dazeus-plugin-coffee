@@ -6,37 +6,37 @@ import help from './handlers/help';
 import instant from './handlers/instant';
 
 // handle
-export default function handle (data, args, origin, reply) {
+export default function handle(data, args, origin, beverage, reply) {
   let command = args.length > 0 ? args.shift() : '';
 
   switch (command) {
     // start a round
     case 'init':
     case 'start':
-      init(args, origin, reply);
+      init(args, origin, beverage, reply);
       break;
 
     // show a help message
     case 'help':
-      help(args, origin, reply);
+      help(args, origin, beverage, reply);
       break;
 
     // remove someone from the list
     case 'remove':
-      remove(args, origin, reply);
+      remove(args, origin, beverage, reply);
       break;
 
     // abort the round
     case 'abort':
     case 'stop':
-      abort(args, origin, reply);
+      abort(args, origin, beverage, reply);
       break;
 
     // get the results of a round instantly
     case 'instant':
     case 'now':
     case 'who':
-      instant(args, origin, reply);
+      instant(args, origin, beverage, reply);
       break;
 
     // somebody wants to be added to the list
@@ -46,7 +46,7 @@ export default function handle (data, args, origin, reply) {
         args.unshift(command);
       }
 
-      add(args, origin, reply);
+      add(args, origin, beverage, reply);
       break;
   }
 }

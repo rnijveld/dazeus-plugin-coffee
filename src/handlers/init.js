@@ -4,7 +4,7 @@ import templates from '../templates';
 import {randomFromList} from '../random';
 
 // creates a new round
-export default function init(args, origin, reply) {
+export default function init(args, origin, beverage, reply) {
   let [network, channel, user] = origin;
 
   // determine the timeout for this round (in seconds)
@@ -18,24 +18,24 @@ export default function init(args, origin, reply) {
     reply(templates.round_too_long({
       max: config.max_round_time,
       timeout: timeout,
-      beverage: config.beverage
+      beverage: beverage
     }));
     return;
   }
 
   // creates the round and the callback which should be executed when it's done
-  let result = storage.add(network, channel, setTimeout(() => {
-    let users = storage.remove(network, channel);
+  let result = storage.add(beverage, network, channel, setTimeout(() => {
+    let users = storage.remove(beverage, network, channel);
     if (users.length === 0) {
       reply(templates.round_finished_empty({
-        beverage: config.beverage
+        beverage: beverage
       }));
     } else {
       let retriever = randomFromList(users);
       reply(templates.round_finished({
         retriever: retriever,
         quantity: users.length,
-        beverage: config.beverage,
+        beverage: beverage,
         people: users.join(', ')
       }));
     }
@@ -43,29 +43,29 @@ export default function init(args, origin, reply) {
 
   // a new round was added
   if (result) {
-    storage.addToList(network, channel, user);
+    storage.addToList(beverage, network, channel, user);
     reply(templates.round_started({
-      beverage: config.beverage,
+      beverage: beverage,
       timeout: timeout,
-      command: config.command
+      command: config.commands[beverage]
     }))
 
   // an existing round was found
   } else {
 
     // check to see if the new user can be added
-    if (!storage.hasUser(network, channel, user)) {
-      storage.addToList(network, channel, user);
+    if (!storage.hasUser(beverage, network, channel, user)) {
+      storage.addToList(beverage, network, channel, user);
       reply(templates.round_ongoing_added({
         user: user,
-        beverage: config.beverage
+        beverage: beverage
       }));
 
     // the user was already on the list
     } else {
       reply(templates.self_existing_user({
         user: user,
-        beverage: config.beverage
+        beverage: beverage
       }));
     }
   }
