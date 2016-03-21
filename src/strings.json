@@ -1,0 +1,25 @@
+{
+  "interval_reminder": "Anybody needs any ${beverage}? We have ${ordering} addict(s). Dial ${command} to join!",
+  "help_message_long": [
+    "Use '${command} init [seconds]' (optional round time) or '${command}' to start a round, use '${command}' to add yourself to the list",
+    "To order ${beverage} for someone else use '${command} [name]'; remove yourself with '${command} remove' and '${command} abort' to abort",
+    "Stop and get the result right now with '${command} now' (or provide a list of names after now, and you'll get the result instantly)"
+  ],
+  "self_existing_user": "You're already on the list, hold your horses...",
+  "other_existing_user": "${user} is already on the list, didn't you see?",
+  "self_added": "You've been added to the list.",
+  "other_added": "${user} has been added to the list.",
+  "round_too_long": "Nobody needs that long to determine if they want ${beverage}...",
+  "round_finished": "Well... ${retriever}! You're the unlucky one, please get ${quantity} ${beverage} for: ${people}.",
+  "round_started": "Anyone needs some ${beverage}? Respond in ${timeout} seconds with ${command}.",
+  "round_ongoing_added": "We're already determining who's going to get ${beverage}, you've been added to the list though!",
+  "no_round_active": "Nobody wants any ${beverage}, maybe start a round first?",
+  "self_removed": "Removed you from the list, are you sure you don't want any ${beverage}?",
+  "other_removed": "Removed ${user} from the list, are you sure they don't want any ${beverage}?",
+  "self_not_removed": "You're not on the list for ${beverage}.",
+  "other_not_removed": "Nobody called ${user} is on the list for ${beverage}.",
+  "round_finished_empty": "Well... Looks like nobody wants any ${beverage}.",
+  "determine_result_now_help": "Go get some then! Or dial ${command} to see if anybody else has a need.",
+  "round_aborted": "Round aborted, nobody gets any ${beverage} this time.",
+  "nothing_to_abort": "There is no round active to abort."
+}

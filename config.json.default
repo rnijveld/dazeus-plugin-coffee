@@ -1,0 +1,5 @@
+{
+  "beverage": "coffee",
+  "reminder_interval": 15000,
+  "default_round_time": 30
+}
