@@ -17,9 +17,14 @@ install dependencies using:
     npm install
 
 After you've done that, copy `config.json.default` to `config.json` and edit
-any options to suit your needs. Then run it using:
+any options to suit your needs. Using gulp we can create a production ready
+version:
 
-    node index.js
+    bin/gulp build
+
+Then run it using:
+
+    node build/index.js
 
 Alternatively for development you may want to use `bin/watch`. This command will
 pass any arguments on to the script itself. Please see `node index.js --help`
